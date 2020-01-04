@@ -66,11 +66,11 @@ class Client
      * @param string $data 参数
      * @param bool $is_json 是否返回Json格式
      * @return bool|mixed|string
-     * @throws Exception
+     * @throws CurlException
      */
     public function getHttp(string $url, $data = '', bool $is_json = false)
     {
-        if (!extension_loaded("curl")) throw new Exception('请开启curl模块！', E_USER_DEPRECATED);
+        if (!extension_loaded("curl")) throw new CurlException('请开启curl模块！', E_USER_DEPRECATED);
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
@@ -95,14 +95,14 @@ class Client
      * 发送Post请求
      * @param string $url 网址
      * @param array $post_data 参数
-     * @param string $headers
      * @param bool $is_json 是否返回Json格式
+     * @param string $headers
      * @return array|bool|mixed|string
-     * @throws Exception
+     * @throws CurlException
      */
     public function postHttp(string $url, array $post_data = [], bool $is_json = false, string $headers = 'application/json;charset=utf-8')
     {
-        if (!extension_loaded("curl")) throw new Exception('请开启curl模块！', E_USER_DEPRECATED);
+        if (!extension_loaded("curl")) throw new CurlException('请开启curl模块！', E_USER_DEPRECATED);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: ' . $headers));
@@ -132,12 +132,12 @@ class Client
      * @param string $headers
      * @param int $second 设置超时
      * @return string
-     * @throws Exception
+     * @throws CurlException
      */
     public function postXml(string $url, string $xmlData = '', string $headers = 'application/json;charset=utf-8', $second = 60)
     {
         //首先检测是否支持curl
-        if (!extension_loaded("curl")) throw new Exception('请开启curl模块！', E_USER_DEPRECATED);
+        if (!extension_loaded("curl")) throw new CurlException('请开启curl模块！', E_USER_DEPRECATED);
         //初始一个curl会话
         $ch = curl_init();
         //设置超时
@@ -174,12 +174,12 @@ class Client
      * @param $sslCertPath
      * @param $sslKeyPath
      * @return string
-     * @throws Exception
+     * @throws CurlException
      */
     public function postFile($url, $post_data = [], $headers = '', $userCert = false, $timeout = 30, $sslCertPath, $sslKeyPath)
     {
         //首先检测是否支持curl
-        if (!extension_loaded("curl")) throw new Exception('请开启curl模块！', E_USER_DEPRECATED);
+        if (!extension_loaded("curl")) throw new CurlException('请开启curl模块！', E_USER_DEPRECATED);
         //初始一个curl会话
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

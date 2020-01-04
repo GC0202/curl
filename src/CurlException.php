@@ -5,12 +5,14 @@
 
 namespace DtApp\Curl;
 
+use Exception;
+
 /**
  * 处理错误
  * Class Exception
  * @package DtApp\Curl
  */
-class Exception extends \Exception
+class CurlException extends Exception
 {
     public function errorMessage()
     {
