@@ -68,7 +68,7 @@ class Client
      * @return bool|mixed|string
      * @throws Exception
      */
-    public function getHttp($url, $data, $is_json)
+    public function getHttp(string $url, $data = '', bool $is_json = false)
     {
         if (!extension_loaded("curl")) throw new Exception('请开启curl模块！', E_USER_DEPRECATED);
         $curl = curl_init();
@@ -100,7 +100,7 @@ class Client
      * @return array|bool|mixed|string
      * @throws Exception
      */
-    public function postHttp($url, array $post_data, $headers, $is_json)
+    public function postHttp(string $url, array $post_data = [], bool $is_json = false, string $headers = 'application/json;charset=utf-8')
     {
         if (!extension_loaded("curl")) throw new Exception('请开启curl模块！', E_USER_DEPRECATED);
         $ch = curl_init();
@@ -134,7 +134,7 @@ class Client
      * @return string
      * @throws Exception
      */
-    public function postXml($url, $xmlData, $headers, $second = 60)
+    public function postXml(string $url, string $xmlData = '', string $headers = 'application/json;charset=utf-8', $second = 60)
     {
         //首先检测是否支持curl
         if (!extension_loaded("curl")) throw new Exception('请开启curl模块！', E_USER_DEPRECATED);
