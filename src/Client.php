@@ -6,6 +6,8 @@
 
 namespace DtApp\Curl;
 
+use Exception;
+
 /**
  * 网络请求
  * Class Client
@@ -86,7 +88,7 @@ class Client
         if (empty($is_json)) return $output;
         try {
             return json_decode($output, true);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return false;
         }
     }
@@ -120,7 +122,7 @@ class Client
         if (empty($is_json)) return $content;
         try {
             return json_decode($content, true);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return false;
         }
     }
