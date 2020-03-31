@@ -4,95 +4,17 @@
  */
 
 
-namespace DtApp\Curl;
+namespace LiGuAngChUn\Curl;
 
 use Exception;
 
 /**
- * 网络请求
- * Class Client
- * @package DtApp\Curl
+ * Post请求
+ * Class Post
+ * @package LiGuAngChUn\Curl
  */
-class Client
+class Post extends BasicCurl
 {
-
-    /**
-     * 判断是否为GET方式
-     * @return bool
-     */
-    public function isGet()
-    {
-        return $_SERVER['REQUEST_METHOD'] == 'GET' ? true : false;
-    }
-
-    /**
-     * 判断是否为POST方式
-     * @return bool
-     */
-    public function isPost()
-    {
-        return $_SERVER['REQUEST_METHOD'] == 'POST' ? true : false;
-    }
-
-    /**
-     * 判断是否为PUT方式
-     * @return boolean
-     */
-    public function isPut()
-    {
-        return $_SERVER['REQUEST_METHOD'] == 'PUT' ? true : false;
-    }
-
-    /**
-     * 判断是否为DELETE方式
-     * @return boolean
-     */
-    public function isDelete()
-    {
-        return $_SERVER['REQUEST_METHOD'] == 'DETELE' ? true : false;
-    }
-
-    /**
-     * 取域名地址
-     * @return string
-     */
-    public function websiteAddress()
-    {
-        $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
-        return $http_type . $_SERVER['HTTP_HOST'] . "/";
-    }
-
-    /**
-     * 发送GET请求
-     * @param string $url 网址
-     * @param string $data 参数
-     * @param bool $is_json 是否返回Json格式
-     * @return bool|mixed|string
-     * @throws CurlException
-     */
-    public function getHttp(string $url, $data = '', bool $is_json = false)
-    {
-        if (!extension_loaded("curl")) throw new CurlException('请开启curl模块！', E_USER_DEPRECATED);
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        if (!empty($data)) {
-            curl_setopt($curl, CURLOPT_POST, 1);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-        }
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-        $output = curl_exec($curl);
-        curl_close($curl);
-        if (empty($is_json)) return $output;
-        try {
-            return json_decode($output, true);
-        } catch (Exception $e) {
-            return false;
-        }
-    }
-
     /**
      * 发送Post请求
      * @param string $url 网址
@@ -102,7 +24,7 @@ class Client
      * @return array|bool|mixed|string
      * @throws CurlException
      */
-    public function postHttp(string $url, array $post_data = [], bool $is_json = false, string $headers = 'application/json;charset=utf-8')
+    public function http(string $url, array $post_data = [], bool $is_json = false, string $headers = 'application/json;charset=utf-8')
     {
         if (!extension_loaded("curl")) throw new CurlException('请开启curl模块！', E_USER_DEPRECATED);
         $ch = curl_init();
@@ -127,6 +49,7 @@ class Client
         }
     }
 
+
     /**
      * 发送Xml数据
      * @param string $url
@@ -136,7 +59,7 @@ class Client
      * @return string
      * @throws CurlException
      */
-    public function postXml(string $url, string $xmlData = '', string $headers = 'application/json;charset=utf-8', $second = 60)
+    public function xml(string $url, string $xmlData = '', string $headers = 'application/json;charset=utf-8', $second = 60)
     {
         //首先检测是否支持curl
         if (!extension_loaded("curl")) throw new CurlException('请开启curl模块！', E_USER_DEPRECATED);
@@ -178,7 +101,7 @@ class Client
      * @return string
      * @throws CurlException
      */
-    public function postFile($url, $post_data = [], $headers = '', $userCert = false, $timeout = 30, $sslCertPath, $sslKeyPath)
+    public function file($url, $post_data = [], $headers = '', $userCert = false, $timeout = 30, $sslCertPath, $sslKeyPath)
     {
         //首先检测是否支持curl
         if (!extension_loaded("curl")) throw new CurlException('请开启curl模块！', E_USER_DEPRECATED);

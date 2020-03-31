@@ -11,10 +11,10 @@
     {
       "name": "Chaim",
       "email": "gc@dtapp.net",
-      "homepage": "https://api.dtapp.net"
+      "homepage": "https://api.liguangchun.cn"
     }
   ],
-  "homepage": "https://www.dtapp.net",
+  "homepage": "https://www.liguangchun.cn",
   "require": {
     "php": ">=7.0",
     "ext-curl": "*",
@@ -22,13 +22,13 @@
   },
   "autoload": {
     "psr-4": {
-      "DtApp\\Curl\\": "src"
+      "LiGuAngChUn\\Curl\\": "src"
     }
   },
   "repositories": {
     "0": {
       "type": "composer",
-      "url": "https://packagist.dtapp.net"
+      "url": "https://packagist.liguangchun.cn"
     },
     "packagist": {
       "type": "composer",

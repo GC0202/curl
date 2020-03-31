@@ -3,7 +3,7 @@
  * (c) Chaim <gc@dtapp.net>
  */
 
-namespace DtApp\Curl;
+namespace LiGuAngChUn\Curl;
 
 use Exception;
 
