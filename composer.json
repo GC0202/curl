@@ -1,20 +1,21 @@
 {
   "name": "liguangchun/curl",
-  "description": "Curl助手",
+  "description": "网络请求助手",
   "keywords": [
     "liguangchun",
     "curl"
   ],
+  "time": "2020-01-04",
   "type": "library",
   "license": "MIT",
   "authors": [
     {
       "name": "Chaim",
       "email": "gc@dtapp.net",
-      "homepage": "https://api.liguangchun.cn"
+      "homepage": "https://api.dtapp.net"
     }
   ],
-  "homepage": "https://www.liguangchun.cn",
+  "homepage": "https://www.dtapp.net",
   "require": {
     "php": ">=7.0",
     "ext-curl": "*",
@@ -22,13 +23,13 @@
   },
   "autoload": {
     "psr-4": {
-      "LiGuAngChUn\\Curl\\": "src"
+      "DtApp\\Curl\\": "src"
     }
   },
   "repositories": {
     "0": {
       "type": "composer",
-      "url": "https://packagist.liguangchun.cn"
+      "url": "https://packagist.dtapp.net"
     },
     "packagist": {
       "type": "composer",

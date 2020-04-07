@@ -1,19 +1,30 @@
 <?php
-/**
- * (c) Chaim <gc@dtapp.net>
- */
 
-namespace LiGuAngChUn\Curl;
+// +----------------------------------------------------------------------
+// | 网络请求助手
+// +----------------------------------------------------------------------
+// | 版权所有 2017~2020 [ https://www.dtapp.net ]
+// +----------------------------------------------------------------------
+// | 官方网站: https://gitee.com/liguangchun/curl
+// +----------------------------------------------------------------------
+// | 开源协议 ( https://mit-license.org )
+// +----------------------------------------------------------------------
+// | gitee 仓库地址 ：https://gitee.com/liguangchun/curl
+// | github 仓库地址 ：https://github.com/GC0202/curl
+// | Packagist 地址 ：https://packagist.org/packages/liguangchun/curl
+// +----------------------------------------------------------------------
+
+namespace DtApp\Curl;
 
 /**
  * 信息
  * Class Info
- * @package LiGuAngChUn\Curl
+ * @package DtApp\Curl
  */
 class Info extends BasicCurl
 {
     /**
-     * 取域名地址
+     * 获取域名地址
      * @return string
      */
     public function getWebsiteAddress()
