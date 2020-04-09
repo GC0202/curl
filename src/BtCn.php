@@ -35,8 +35,9 @@ class BtCn extends BasicCurl
      * @return string
      * @throws CurlException
      */
-    protected function httpPost(string $url, array $data = [], string $cookie = '', int $timeout = 60, bool $is_json = false)
+    public function httpPost(string $url = '', array $data = [], string $cookie = '', int $timeout = 60, bool $is_json = false)
     {
+        if (empty($cookie)) throw new CurlException('请检查cookie内容');
         if (empty($this->config->get('bt_panel'))) throw new CurlException('请配置宝塔网址, 【bt_panel】');
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->config->get('bt_panel') . $url);
@@ -60,7 +61,7 @@ class BtCn extends BasicCurl
     }
 
     /**
-     *
+     * 签名
      * @return array
      * @throws CurlException
      */
