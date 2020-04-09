@@ -32,7 +32,7 @@ class BtCn extends BasicCurl
      * @param string $cookie 认证内容
      * @param int $timeout 超时，默认60s
      * @param bool $is_json 是否返回Json格式
-     * @return string
+     * @return bool|mixed|string
      * @throws CurlException
      */
     public function httpPost(string $url = '', array $data = [], string $cookie = '', int $timeout = 60, bool $is_json = false)
@@ -61,7 +61,7 @@ class BtCn extends BasicCurl
     }
 
     /**
-     * 签名
+     * 构造带有签名的关联数组
      * @return array
      * @throws CurlException
      */
