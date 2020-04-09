@@ -26,7 +26,7 @@ class BasicCurl
     /**
      * 定义当前版本
      */
-    const VERSION = '1.0.6';
+    const VERSION = '1.0.7';
 
     /**
      * 配置
