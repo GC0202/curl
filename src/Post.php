@@ -108,10 +108,10 @@ class Post extends BasicCurl
      * @param int $timeout
      * @param $sslCertPath
      * @param $sslKeyPath
-     * @return string
+     * @return false|string
      * @throws CurlException
      */
-    public function file($url, $post_data = [], $headers = '', $userCert = false, $timeout = 30, $sslCertPath, $sslKeyPath)
+    public function file(string $url, $post_data = [],string $headers = '',bool $userCert = false,int $timeout = 30, $sslCertPath, $sslKeyPath)
     {
         //首先检测是否支持curl
         if (!extension_loaded("curl")) throw new CurlException('请开启curl模块！', E_USER_DEPRECATED);
@@ -124,7 +124,7 @@ class Post extends BasicCurl
         }
         //设置超时
         curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
-        if ($userCert) {
+        if (empty($userCert)) {
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
             curl_setopt($ch, CURLOPT_SSLCERTTYPE, 'PEM');
